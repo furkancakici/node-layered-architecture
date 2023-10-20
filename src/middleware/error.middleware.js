@@ -1,6 +1,6 @@
 import HttpStatusCodes from 'http-status-codes'
 
-const errorHandler = handler => {
+const ErrorHandler = handler => {
     return async (req, res) => {
         try {
             await handler(req, res)
@@ -10,4 +10,4 @@ const errorHandler = handler => {
     }
 }
 
-export default errorHandler
+export default ErrorHandler

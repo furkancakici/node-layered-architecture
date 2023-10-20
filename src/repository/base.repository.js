@@ -3,36 +3,36 @@ class BaseRepository {
         this.collection = _collection
     }
 
-    getAll() {
-        return this.collection.find().lean().exec()
+    async getAll() {
+        return await this.collection.find().lean().exec()
     }
 
-    getById(id) {
-        return this.collection.findById(id)
+    async getById(id) {
+        return await this.collection.findById(id)
     }
 
-    create(model) {
-        return this.collection.create(model)
+    async create(model) {
+        return await this.collection.create(model)
     }
 
-    update(id, model) {
-        return this.collection.findByIdAndUpdate(id, model)
+    async update(id, model) {
+        return await this.collection.findByIdAndUpdate(id, model)
     }
 
-    deleteById(id) {
-        return this.collection.findByIdAndDelete(id)
+    async deleteById(id) {
+        return await this.collection.findByIdAndDelete(id)
     }
 
-    search(query) {
-        return this.collection.find({ $text: { $search: query } })
+    async search(query) {
+        return await this.collection.find({ $text: { $search: query } })
     }
 
-    count() {
-        return this.collection.countDocuments()
+    async count() {
+        return await this.collection.countDocuments()
     }
 
-    aggregate(pipeline) {
-        return this.collection.aggregate(pipeline)
+    async aggregate(pipeline) {
+        return await this.collection.aggregate(pipeline)
     }
 }
 

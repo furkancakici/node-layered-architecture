@@ -7,7 +7,7 @@ class CategoryService {
 
     getAll = async () => {
         try {
-            const categories = await this.CategoryRepository.findAll()
+            const categories = await this.CategoryRepository.getAll()
             return categories
         } catch (error) {
             throw error
@@ -16,7 +16,7 @@ class CategoryService {
 
     getById = async id => {
         try {
-            const category = await this.CategoryRepository.findById(id)
+            const category = await this.CategoryRepository.getById(id)
             return category
         } catch (error) {
             throw error

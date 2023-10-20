@@ -21,7 +21,7 @@ class BaseController {
         res.status(HttpStatusCodes.CREATED).json(newEntity)
     })
 
-    delete = errorHandler(async (req, res) => {
+    deleteById = errorHandler(async (req, res) => {
         const entity = await this.service.deleteById(req.params.id)
         res.status(HttpStatusCodes.OK).json(entity)
     })

@@ -22,7 +22,7 @@ class CategoryController {
         res.status(HttpStatusCodes.CREATED).json(newCategory)
     })
 
-    delete = errorHandler(async (req, res) => {
+    deleteById = errorHandler(async (req, res) => {
         const category = await this.CategoryService.deleteById(req.params.id)
         res.status(HttpStatusCodes.OK).json(category)
     })

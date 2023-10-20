@@ -3,11 +3,11 @@ class BaseRepository {
         this.collection = _collection
     }
 
-    findAll() {
+    getAll() {
         return this.collection.find().lean().exec()
     }
 
-    findById(id) {
+    getById(id) {
         return this.collection.findById(id)
     }
 
@@ -21,6 +21,18 @@ class BaseRepository {
 
     deleteById(id) {
         return this.collection.findByIdAndDelete(id)
+    }
+
+    search(query) {
+        return this.collection.find({ $text: { $search: query } })
+    }
+
+    count() {
+        return this.collection.countDocuments()
+    }
+
+    aggregate(pipeline) {
+        return this.collection.aggregate(pipeline)
     }
 }
 

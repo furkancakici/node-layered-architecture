@@ -1,9 +1,10 @@
 import BaseController from './base.controller.js'
 import CategoryService from '../service/category.service.js'
+import CategoryRepository from '../repository/category.repository.js'
 
 class CategoryController extends BaseController {
     constructor() {
-        super(CategoryService)
+        super(new CategoryService(new CategoryRepository()))
     }
 }
 

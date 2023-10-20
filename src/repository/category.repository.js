@@ -1,9 +1,9 @@
 import BaseRepository from './base.repository.js'
-import Category from '../models/category.model.js'
+import CategoryModel from '../models/category.model.js'
 
 class CategoryRepository extends BaseRepository {
     constructor() {
-        super(Category)
+        super(CategoryModel)
     }
 }
 

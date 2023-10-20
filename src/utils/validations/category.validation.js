@@ -1,3 +1,3 @@
 import { body } from 'express-validator'
 
-export const categoryValidation = body('name').isEmail().withMessage('Email is required')
+export const categoryValidation = body('name').isString().withMessage('Name must be a string')

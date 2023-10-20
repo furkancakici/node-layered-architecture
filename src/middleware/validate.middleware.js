@@ -4,7 +4,7 @@ import HttpStatusCodes from 'http-status-codes'
 const ValidateHandler = (req, res, next) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
-        return res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ errors: errors.array() })
+        return res.status(HttpStatusCodes.BAD_REQUEST).json({ errors: errors.array() })
     }
 
     next()

@@ -1,59 +1,57 @@
 import HttpStatusCodes from 'http-status-codes'
 import ErrorHandler from '../middleware/error.middleware.js'
-import ValidateHandler from '../middleware/validate.middleware.js'
 
 class BaseController {
-    constructor(_service) {
-        this.service = _service
+    constructor(service) {
+        this._service = service
     }
 
     // Common Handlers
 
     getAll = ErrorHandler(async (req, res) => {
-        const entities = await this.service.getAll()
+        const entities = await this._service.getAll()
         if (!entities) this.notFound(res)
         this.ok(res, entities)
     })
 
     getById = ErrorHandler(async (req, res) => {
-        const entity = await this.service.getById(req.params.id)
+        const entity = await this._service.getById(req.params.id)
         if (!entity) this.notFound(res)
         this.ok(res, entity)
     })
 
     create = ErrorHandler(async (req, res) => {
-        ValidateHandler(req, res)
-        const newEntity = await this.service.create(req.body)
+        const newEntity = await this._service.create(req.body)
         if (!newEntity) this.conflict(res)
         this.created(res, newEntity)
     })
 
     deleteById = ErrorHandler(async (req, res) => {
-        const entity = await this.service.deleteById(req.params.id)
+        const entity = await this._service.deleteById(req.params.id)
         if (!entity) this.notFound(res)
         this.ok(res, entity)
     })
 
     update = ErrorHandler(async (req, res) => {
-        const entity = await this.service.update(req.params.id, req.body)
+        const entity = await this._service.update(req.params.id, req.body)
         if (!entity) this.notFound(res)
         this.ok(res, entity)
     })
 
     search = ErrorHandler(async (req, res) => {
-        const entities = await this.service.search(req.query.q)
+        const entities = await this._service.search(req.query.q)
         if (!entities) this.notFound(res)
         this.ok(res, entities)
     })
 
     count = ErrorHandler(async (req, res) => {
-        const count = await this.service.count()
+        const count = await this._service.count()
         if (!count) this.notFound(res)
         this.ok(res, count)
     })
 
     aggregate = ErrorHandler(async (req, res) => {
-        const entities = await this.service.aggregate(req.body)
+        const entities = await this._service.aggregate(req.body)
         if (!entities) this.notFound(res)
         this.ok(res, entities)
     })

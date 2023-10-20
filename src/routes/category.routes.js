@@ -1,7 +1,6 @@
 import Express from 'express'
 import CategoryController from '../controllers/category.controller.js'
 import { categoryValidation } from '../utils/validations/category.validation.js'
-import ValidateHandler from '../middleware/validate.middleware.js'
 
 const router = Express.Router()
 const categoryController = new CategoryController()

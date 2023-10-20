@@ -3,8 +3,8 @@ import ErrorHandler from '../middleware/error.middleware.js'
 import ValidateHandler from '../middleware/validate.middleware.js'
 
 class BaseController {
-    constructor(service) {
-        this.service = service
+    constructor(_service) {
+        this.service = _service
     }
 
     // Common Handlers
